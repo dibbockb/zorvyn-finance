@@ -30,3 +30,9 @@
 body {
     background-color: oklch(0.9696 0.0147 281.96);
 }
+
+.aside-button {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
