@@ -14,7 +14,7 @@ export default function RootLayout() {
                 <nav className="flex flex-row py-4 lg:flex-col gap-3 text-[#5c5e6a] lg:pt-12 ">
                     <NavLink to="/" className={({ isActive }) =>
                         `flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 text-xs lg:text-base
-                             px-5 lg:px-6 py-2 lg:py-3 rounded transition-all duration-300 ease-in-out
+                             px-5 lg:px-6 py-2 lg:py-3 rounded-4xl lg:rounded transition-all duration-300 ease-in-out
                              ${isActive
                             ? 'bg-primary/30 shadow-lg text-[#003d9b]'
                             : 'hover:bg-primary/30 hover:shadow-lg hover:text-[#003d9b]'

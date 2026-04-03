@@ -1,7 +1,7 @@
 
 const Transactions = () => {
     return (
-        <div>this is transactions</div>
+        <section className="h-screen bg-[#faf8ff] rounded shadow-xl p-5"></section>
     )
 }
 
