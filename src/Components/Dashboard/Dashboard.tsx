@@ -1,10 +1,11 @@
-import Navbar from "../Navbar/Navbar"
+import Cards from "./Cards/Cards"
+import Navbar from "./Navbar/Navbar"
 
 const Dashboard = () => {
     return (
-        <section className="h-screen bg-[#faf8ff] rounded shadow-xl p-5">
+        <section className="min-h-screen bg-[#faf8ff] rounded shadow-xl px-10 py-3">
             <Navbar></Navbar>
-
+            <Cards></Cards>
         </section>
 
     )

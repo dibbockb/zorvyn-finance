@@ -1,5 +1,5 @@
 import { ArrowDownToLine, BellDot, Plus, Search } from 'lucide-react'
-import { ToggleRole } from '../ToggleRole/ToggleRole'
+import { ToggleRole } from '../../ToggleRole/ToggleRole'
 
 const Navbar = () => {
     return (
@@ -31,7 +31,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="flex justify-between items-center pt-5">
+            <div className="hidden lg:flex justify-between items-center pt-5">
                 <div>
                     <h1 className="hidden lg:block text-2xl text-black font-bold pb-1">Financial Overview</h1>
                     <h3 className="hidden lg:block text-black/70 font-medium">Aggregated data for fiscal year 2026</h3>
