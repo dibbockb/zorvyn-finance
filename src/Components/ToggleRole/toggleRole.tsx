@@ -1,11 +1,11 @@
 import { useStore } from "../../store/useStore";
 
-export const RoleToggle = () => {
+export const ToggleRole = () => {
     const { role, setRole } = useStore();
 
     return (
-        <div className="flex items-center gap-3 p-2 bg-white rounded-xl shadow-sm border border-secondary/10">
-            <div className="flex bg-background p-1 rounded-lg gap-2">
+        <div className="flex items-center gap-3 p-2 rounded-xl  ">
+            <div className="flex bg-background p-3 rounded-lg gap-2">
                 {(['User', 'Admin'] as const).map((r) => (
                     <button
                         key={r}
