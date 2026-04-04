@@ -1,4 +1,5 @@
 import BalanceChart from "../Charts/BalanceChart"
+import RecentTransactions from "../Charts/RecentTransactions"
 import SpendingBreakdown from "../Charts/SpendingBreakdown"
 import Cards from "./Cards/Cards"
 import Navbar from "./Navbar/Navbar"
@@ -15,6 +16,9 @@ const Dashboard = () => {
                 </div>
                 <div className="lg:col-span-1">
                     <SpendingBreakdown />
+                </div>
+                <div className="lg:col-span-3">
+                    <RecentTransactions></RecentTransactions>
                 </div>
             </div>
         </section>

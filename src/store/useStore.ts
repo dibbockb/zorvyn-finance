@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Role } from '../../public/data/types/types';
-import { SUMMARY_STATS, type Transaction } from '../lib/mockdata/data';
+import { RECENT_TRANSACTIONS, SUMMARY_STATS, type Transaction } from '../lib/mockdata/data';
 
 interface FinanceState {
     transactions: Transaction[];
@@ -13,7 +13,7 @@ interface FinanceState {
 export const useStore = create<FinanceState>()(
     persist(
         (set) => ({
-            transactions: [],
+            transactions: RECENT_TRANSACTIONS,
             role: 'User',
             setRole: (role) => set({ role }),
             addTransaction: (tx) =>
