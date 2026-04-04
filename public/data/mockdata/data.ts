@@ -7,19 +7,65 @@ export const SUMMARY_STATS = {
     projectedBalance: 48000, // [cite: 158]
 };
 
-export const BALANCE_TREND = [
-    { date: '01 Oct', balance: 35000 }, // [cite: 31]
-    { date: '08 Oct', balance: 38000 }, // [cite: 32]
-    { date: '15 Oct', balance: 41000 }, // [cite: 33]
-    { date: '22 Oct', balance: 44000 }, // [cite: 34]
-    { date: '30 Oct', balance: 45230 }, // [cite: 35]
-];
+export const BALANCE_TREND = {
+    '7D': [
+        { date: '29 Mar', balance: 47850 },
+        { date: '30 Mar', balance: 48520 },
+        { date: '31 Mar', balance: 49210 },
+        { date: '01 Apr', balance: 49870 },
+        { date: '02 Apr', balance: 50340 },
+        { date: '03 Apr', balance: 49780 },
+        { date: '04 Apr', balance: 51000 },
+    ],
+    '15D': [
+        { date: '21 Mar', balance: 46120 },
+        { date: '22 Mar', balance: 45580 },
+        { date: '23 Mar', balance: 46890 },
+        { date: '24 Mar', balance: 47430 },
+        { date: '25 Mar', balance: 48150 },
+        { date: '26 Mar', balance: 47760 },
+        { date: '27 Mar', balance: 48340 },
+        { date: '28 Mar', balance: 47990 },
+        { date: '29 Mar', balance: 47850 },
+        { date: '30 Mar', balance: 48520 },
+        { date: '31 Mar', balance: 49210 },
+        { date: '01 Apr', balance: 49870 },
+        { date: '02 Apr', balance: 50340 },
+        { date: '03 Apr', balance: 49780 },
+        { date: '04 Apr', balance: 51000 },
+    ],
+    '1M': [
+        { date: '04 Mar', balance: 41230 },
+        { date: '06 Mar', balance: 42890 },
+        { date: '08 Mar', balance: 43560 },
+        { date: '10 Mar', balance: 44970 },
+        { date: '12 Mar', balance: 45820 },
+        { date: '14 Mar', balance: 47210 },
+        { date: '16 Mar', balance: 48140 },
+        { date: '18 Mar', balance: 47680 },
+        { date: '20 Mar', balance: 48950 },
+        { date: '22 Mar', balance: 45580 },
+        { date: '23 Mar', balance: 46890 },
+        { date: '24 Mar', balance: 47430 },
+        { date: '25 Mar', balance: 48150 },
+        { date: '26 Mar', balance: 47760 },
+        { date: '27 Mar', balance: 48340 },
+        { date: '28 Mar', balance: 47990 },
+        { date: '29 Mar', balance: 47850 },
+        { date: '30 Mar', balance: 48520 },
+        { date: '31 Mar', balance: 49210 },
+        { date: '01 Apr', balance: 49870 },
+        { date: '02 Apr', balance: 50340 },
+        { date: '03 Apr', balance: 49780 },
+        { date: '04 Apr', balance: 51000 },
+    ],
+};
 
 export const SPENDING_BREAKDOWN = [
-    { category: 'Housing', value: 42, color: '#0047AB' }, // [cite: 27, 28]
-    { category: 'Food & Beverage', value: 28, color: '#006B3C' }, // [cite: 29, 30]
-    { category: 'Transport', value: 15, color: '#C41E3A' }, // [cite: 36, 37]
-    { category: 'Entertainment', value: 15, color: '#666666' }, // [cite: 38, 39]
+    { category: 'Housing', value: 42, color: '#0047AB' },
+    { category: 'Food & Beverage', value: 28, color: '#006B3C' }, 
+    { category: 'Transport', value: 15, color: '#C41E3A' }, 
+    { category: 'Entertainment', value: 15, color: '#666666' }, 
 ];
 
 export const MONTHLY_COMPARISON = [
