@@ -1,5 +1,5 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { BALANCE_TREND } from '../../../public/data/mockdata/data';
+import { BALANCE_TREND } from '../../lib/mockdata/data';
 import { useState } from 'react';
 
 const BalanceTrend = () => {
@@ -63,14 +63,15 @@ const BalanceTrend = () => {
                             strokeWidth={3}
                             fillOpacity={1}
                             fill="url(#colorBalance)"
-                            dot={{ r: 4, fill: '#0047AB', strokeWidth: 2, stroke: '#fff' }}
+                            dot={{ r: 4, fill: '#0047AB', strokeWidth: 1, stroke: '#fff' }}
+                            // activeDot={false}
                             activeDot={{ r: 6, strokeWidth: 0 }}
                         />
                     </AreaChart>
                 </ResponsiveContainer>
             </div>
 
-            
+
         </div>
     );
 };

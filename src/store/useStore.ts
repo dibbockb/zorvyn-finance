@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Role } from '../../public/data/types/types';
-import { SUMMARY_STATS, type Transaction } from '../../public/data/mockdata/data';
+import { SUMMARY_STATS, type Transaction } from '../lib/mockdata/data';
 
 interface FinanceState {
     transactions: Transaction[];

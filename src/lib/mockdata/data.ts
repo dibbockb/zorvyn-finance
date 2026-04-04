@@ -1,10 +1,10 @@
 export const SUMMARY_STATS = {
-    totalBalance: 45230.12, // [cite: 10]
-    monthlyIncome: 8200.00, // [cite: 13]
-    monthlyExpenses: 3450.50, // [cite: 23]
-    netCashflow: 48229.40, // [cite: 95]
-    savingsRate: 15, // [cite: 15, 156]
-    projectedBalance: 48000, // [cite: 158]
+    totalBalance: 45230.12,
+    monthlyIncome: 8200.00,
+    monthlyExpenses: 7450.50,
+    netCashflow: 48229.40,
+    savingsRate: 15,
+    projectedBalance: 48000,
 };
 
 export const BALANCE_TREND = {
@@ -63,16 +63,16 @@ export const BALANCE_TREND = {
 
 export const SPENDING_BREAKDOWN = [
     { category: 'Housing', value: 42, color: '#0047AB' },
-    { category: 'Food & Beverage', value: 28, color: '#006B3C' }, 
-    { category: 'Transport', value: 15, color: '#C41E3A' }, 
-    { category: 'Entertainment', value: 15, color: '#666666' }, 
+    { category: 'Food & Beverage', value: 28, color: '#006B3C' },
+    { category: 'Transport', value: 15, color: '#C41E3A' },
+    { category: 'Entertainment', value: 15, color: '#666666' },
 ];
 
 export const MONTHLY_COMPARISON = [
-    { month: 'Jan', income: 7500, expenses: 3200 }, // [cite: 161, 162, 163]
-    { month: 'Feb', income: 7800, expenses: 3100 }, // [cite: 164]
-    { month: 'Mar', income: 8100, expenses: 3500 }, // [cite: 165]
-    { month: 'Apr', income: 8200, expenses: 3450 }, // [cite: 166]
+    { month: 'Jan', income: 7500, expenses: 3200 },
+    { month: 'Feb', income: 7800, expenses: 3100 },
+    { month: 'Mar', income: 8100, expenses: 3500 },
+    { month: 'Apr', income: 8200, expenses: 3450 },
 ];
 
 export type Role = 'Admin' | 'User';
@@ -90,14 +90,14 @@ export interface Transaction {
 export const INSIGHTS = [
     {
         id: 'i1',
-        title: 'Dining Out Alert', // [cite: 181]
-        description: 'Your spending on Dining Out increased by 20% this week.', // [cite: 181]
+        title: 'Dining Out Alert',
+        description: 'Your spending on Dining Out increased by 20% this week.',
         type: 'warning',
     },
     {
         id: 'i2',
-        title: 'Optimization Opportunity', // [cite: 256]
-        description: 'Your subscription to "StreamCloud" hasn\'t been used in 30 days.', // [cite: 257]
+        title: 'Optimization Opportunity',
+        description: 'Your subscription to "StreamCloud" hasn\'t been used in 30 days.',
         type: 'info',
     },
 ];
