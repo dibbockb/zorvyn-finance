@@ -2,13 +2,31 @@ import StatCard from "../../Statcard/StatCard";
 import { useStore, selectTotals } from "../../../store/useStore";
 // FIX: Import shallow from zustand
 import { useShallow } from 'zustand/react/shallow';
+import { ArrowDownToLine, Plus, } from 'lucide-react'
 
 const Cards = () => {
     const { totalBalance, monthlyIncome, monthlyExpenses } = useStore(
         useShallow((state) => selectTotals(state))
     );
     return (
-        <div className="flex flex-col gap-6 pt-10">
+        <div className="flex flex-col gap-6 pt-2">
+            <div className="hidden lg:flex justify-between items-center pt-5">
+                <div className="pl-1">
+                    <h1 className="hidden lg:block text-2xl text-black font-bold pb-1 ">Financial Overview</h1>
+                    <h3 className="hidden lg:block text-black/70 font-medium">Aggregated data for fiscal year 2026</h3>
+                </div>
+
+                <div className="gap-2 hidden lg:flex">
+                    <button className="flex justify-center items-center gap-1 px-3 py-3 rounded-xl text-sm text-primary font-bold bg-[#E2E8FC] hover:bg-[#E2E8FC]/75 transition-all duration-100 ease-in-out"><ArrowDownToLine size={18}></ArrowDownToLine>
+                        <p className="">Export Report</p>
+                    </button>
+
+                    <button className="flex justify-center items-center gap-1 px-3 py-3 rounded-xl text-sm text-white font-bold bg-primary hover:bg-primary/75 transition-all duration-100 ease-in-out"><Plus size={18}></Plus>
+                        <p className="">Add Transaction</p>
+                    </button>
+                </div>
+            </div>
+
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                 <StatCard title="Total Balance" amount={totalBalance} type="balance" percentage={75} />
                 <StatCard title="Monthly Income" amount={monthlyIncome} type="income" percentage={5} />

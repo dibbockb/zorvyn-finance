@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css'
 import Dashboard from './Components/Dashboard/Dashboard.tsx';
 import Rootlayout from './Components/Layouts/Dashboard/RootLayout.tsx';
-import Transactions from './Components/Transactions/Transactions.tsx';
+import Transactions from './Components/TransactionsList/TransactionsList.tsx';
 import Insights from './Components/Insights/Insights.tsx';
 
 const router = createBrowserRouter([

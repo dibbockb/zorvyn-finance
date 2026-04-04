@@ -1,4 +1,4 @@
-import { ArrowDownToLine, BellDot, Plus, Search } from 'lucide-react'
+import { BellDot, Search } from 'lucide-react'
 import { ToggleRole } from '../../ToggleRole/ToggleRole'
 
 const Navbar = () => {
@@ -31,22 +31,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="hidden lg:flex justify-between items-center pt-5">
-                <div>
-                    <h1 className="hidden lg:block text-2xl text-black font-bold pb-1">Financial Overview</h1>
-                    <h3 className="hidden lg:block text-black/70 font-medium">Aggregated data for fiscal year 2026</h3>
-                </div>
-
-                <div className="gap-2 hidden lg:flex">
-                    <button className="flex justify-center items-center gap-1 px-3 py-3 rounded-xl text-sm text-primary font-bold bg-[#E2E8FC] hover:bg-[#E2E8FC]/75 transition-all duration-100 ease-in-out"><ArrowDownToLine size={18}></ArrowDownToLine>
-                        <p className="">Export Report</p>
-                    </button>
-
-                    <button className="flex justify-center items-center gap-1 px-3 py-3 rounded-xl text-sm text-white font-bold bg-primary hover:bg-primary/75 transition-all duration-100 ease-in-out"><Plus size={18}></Plus>
-                        <p className="">Add Transaction</p>
-                    </button>
-                </div>
-            </div>
+            
         </nav>
     )
 }
