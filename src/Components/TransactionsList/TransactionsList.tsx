@@ -5,7 +5,7 @@ import { useShallow } from 'zustand/react/shallow';
 import Navbar from "../Dashboard/Navbar/Navbar";
 
 const TransactionsList = () => {
-    const { transactions, totalBalance } = useStore(useShallow((state) => ({
+    const { transactions } = useStore(useShallow((state) => ({
         transactions: state.transactions,
         ...selectTotals(state)
     })));
@@ -54,10 +54,6 @@ const TransactionsList = () => {
         }
     };
 
-    const formattedBalance = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    }).format(totalBalance);
 
     return (
         <section className="h-screen bg-[#faf8ff] rounded shadow-xl px-4 lg:px-10 py-3 pb-20 lg:pb-10 overflow-y-auto">
@@ -69,21 +65,21 @@ const TransactionsList = () => {
             </div>
 
             <div className="flex items-center pt-8">
-                <div>
+                <div className="pl-2">
                     <h1 className="text-2xl text-black font-bold pb-1">Transactions</h1>
-                    <p className="text-black/60 font-medium text-sm">Detailed ledger of all institutional movements.</p>
+                    <p className="text-black/60 font-medium text-sm max-w-75 lg:max-w-125">Detailed ledger of all institutional movements.</p>
                 </div>
-                <button className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-primary font-bold bg-[#E2E8FC] hover:bg-primary/10 transition-all">
+                <button className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-primary font-bold bg-[#E2E8FC] hover:bg-[#E2E8FC]/80 transition-all duration-100 ease-in-out">
                     <ArrowDownToLine size={18} />
-                    Export
+                    <span className="hidden lg:block">Export</span>
                 </button>
             </div>
 
             <div className="flex flex-col lg:flex-row gap-6 pt-8 ">
                 {/* ///filters */}
-                <div className="flex-1  bg-white p-6 rounded-3xl shadow-sm border border-black/5 flex flex-wrap items-center  gap-8">
+                <div className="flex-1  bg-white p-6 rounded-3xl shadow-sm border border-black/5 flex flex-wrap justify-center lg:justify-start items-center  gap-8">
                     <div className="flex flex-col gap-2">
-                        <label className="text-[10px] font-black uppercase text-black/40 tracking-widest">Date Range</label>
+                        <label className="text-[10px] font-black uppercase text-black/40 tracking-widest text-center lg:text-start lg:pl-1">Date Range</label>
                         <div className="relative group">
                             <select
                                 value={dateRange}
@@ -100,7 +96,7 @@ const TransactionsList = () => {
                     <div className="w-px h-12 mt-3 bg-black/20 hidden lg:block" />
 
                     <div className="flex flex-col gap-2 ">
-                        <label className="text-[10px] font-black uppercase text-black/40 tracking-widest">Transaction Type</label>
+                        <label className="text-[10px] font-black uppercase text-black/40 tracking-widest text-center lg:text-start lg:pl-1">Transaction Type</label>
                         <div className="flex bg-[#f1f3ff] p-1 rounded-xl gap-1">
                             {['All', 'Income', 'Expense'].map((type) => (
                                 <button
@@ -116,7 +112,7 @@ const TransactionsList = () => {
                     <div className="w-px h-12  mt-3 bg-black/20 hidden lg:block" />
 
                     <div className="flex flex-col gap-2">
-                        <label className="text-[10px] font-black uppercase text-black/40 tracking-widest">Categories</label>
+                        <label className="text-[10px] font-black uppercase text-black/40 tracking-widest text-center lg:text-start lg:pl-1">Categories</label>
                         <div className="relative group">
                             <select
                                 onChange={(e) => setSelectedCategory(e.target.value)}
@@ -142,45 +138,42 @@ const TransactionsList = () => {
 
 
             {/* ///table */}
-            <div className="mt-8 bg-white rounded-3xl border border-black/5 shadow-sm overflow-hidden">
-                <table className="w-full text-left border-collapse">
-                    <thead>
-                        <tr className="border-b border-black/5">
-                            <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest">Date</th>
-                            <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest">Description</th>
-                            <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest text-right">Amount</th>
-                            <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest text-center">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-black/10">
-                        {filteredTransactions.length > 0 ? (
-                            filteredTransactions.map((tx) => (
-                                <tr key={tx.id} className="hover:bg-primary/5 transition-all duration-250 ease-in-out group">
-                                    <td className="px-8 py-6 text-sm font-bold text-black/60">{tx.date}, 2026</td>
-                                    <td className="px-8 py-6">
-                                        <div className="flex items-center gap-4">
-                                            <div className="p-2.5 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform duration-200">
-                                                {getCategoryIcon(tx.category)}
+            <div className="mt-8">
+                {/* Desktop View: Traditional Table */}
+                <div className="hidden md:block bg-white rounded-3xl border border-black/5 shadow-sm overflow-hidden">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="border-b border-black/5">
+                                <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest">Date</th>
+                                <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest">Description</th>
+                                <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest text-right">Amount</th>
+                                <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-black/10">
+                            {filteredTransactions.length > 0 ? (
+                                filteredTransactions.map((tx) => (
+                                    <tr key={tx.id} className="hover:bg-primary/5 transition-all duration-250 group">
+                                        <td className="px-8 py-6 text-sm font-bold text-black/60">{tx.date}, 2026</td>
+                                        <td className="px-8 py-6">
+                                            <div className="flex items-center gap-4">
+                                                <div className="p-2.5 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
+                                                    {getCategoryIcon(tx.category)}
+                                                </div>
+                                                <span className="text-sm font-black text-black/80">{tx.description}</span>
                                             </div>
-                                            <span className="text-sm font-black text-black/80">{tx.description}</span>
-                                        </div>
-                                    </td>
-                                    <td className={`px-8 py-6 text-sm font-black text-right ${tx.type === 'Income' ? 'text-tertiary' : 'text-red-600'}`}>
-                                        {tx.type === 'Income' ? '+' : '-'}${tx.amount.toLocaleString()}
-                                    </td>
-                                    <td className="px-8 py-6 text-center">
-                                        <div className="flex justify-center">
-                                            {tx.status === 'Completed' ? (
-                                                <CheckCircle2 size={20} className="text-tertiary" />
-                                            ) : (
-                                                <Clock size={20} className="text-black/20" />
-                                            )}
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
+                                        </td>
+                                        <td className={`px-8 py-6 text-sm font-black text-right ${tx.type === 'Income' ? 'text-tertiary' : 'text-red-600'}`}>
+                                            {tx.type === 'Income' ? '+' : '-'}${tx.amount.toLocaleString()}
+                                        </td>
+                                        <td className="px-8 py-6 text-center">
+                                            <div className="flex justify-center">
+                                                {tx.status === 'Completed' ? <CheckCircle2 size={20} className="text-tertiary" /> : <Clock size={20} className="text-black/20" />}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : <tr>
                                 <td colSpan={4} className="px-8 py-24 text-center">
                                     <div className="flex flex-col items-center gap-3">
                                         <div className="p-4 bg-[#f1f3ff] rounded-full text-black/20">
@@ -192,10 +185,41 @@ const TransactionsList = () => {
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                            </tr>}
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Mobile View: Vertical Cards */}
+                <div className="md:hidden flex flex-col gap-4">
+                    {filteredTransactions.length > 0 ? (
+                        filteredTransactions.map((tx) => (
+                            <div key={tx.id} className="bg-white p-5 rounded-2xl border border-black/5 shadow-sm flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <div className="p-3 bg-primary/10 rounded-xl">
+                                        {getCategoryIcon(tx.category)}
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-black text-black/80">{tx.description}</p>
+                                        <p className="text-[10px] font-bold text-black/40 uppercase tracking-tight">{tx.date}, 2026</p>
+                                    </div>
+                                </div>
+                                <div className="text-right">
+                                    <p className={`text-sm font-black ${tx.type === 'Income' ? 'text-tertiary' : 'text-red-600'}`}>
+                                        {tx.type === 'Income' ? '+' : '-'}${tx.amount.toLocaleString()}
+                                    </p>
+                                    <div className="hidden lg:flex justify-end mt-1">
+                                        {tx.status === 'Completed' ? <CheckCircle2 size={14} className="text-tertiary" /> : <Clock size={14} className="text-black/20" />}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="bg-white py-10 rounded-2xl border border-dashed border-black/10 text-center">
+                            <p className="text-black/40 text-sm font-bold">Nothing found.</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </section>
     );
