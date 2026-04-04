@@ -1,27 +1,24 @@
+import StatCard from "../../Statcard/StatCard";
+import { useStore, selectTotals } from "../../../store/useStore";
+// FIX: Import shallow from zustand
+import { useShallow } from 'zustand/react/shallow';
+
 const Cards = () => {
+    const { totalBalance, monthlyIncome, monthlyExpenses } = useStore(
+        useShallow((state) => selectTotals(state))
+    );
     return (
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-10">
-
-            <div className="bg-white min-h-50 p-8 rounded-2xl shadow-sm border border-secondary/10  hover:shadow-md transition-all duration-300 ease-in-out">
+        <div className="flex flex-col gap-6 pt-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                <StatCard title="Total Balance" amount={totalBalance} type="balance" percentage={75} />
+                <StatCard title="Monthly Income" amount={monthlyIncome} type="income" percentage={5} />
+                <div className="hidden lg:block">
+                    <StatCard title="Monthly Expenses" amount={monthlyExpenses} type="expense" percentage={-2} />
+                </div>
             </div>
-
-            <div className="bg-white min-h-50 p-8 rounded-2xl shadow-sm border border-secondary/10 hover:shadow-md transition-all duration-300 ease-in-out">
-            </div>
-
-            <div className="bg-white min-h-50 p-8 rounded-2xl shadow-sm border border-secondary/10  hover:shadow-md transition-all duration-300 ease-in-out">
-            </div>
-
-            <div className="lg:col-span-2 bg-white p-8 rounded-4xl shadow-sm border border-secondary/5 min-h-100 hover:shadow-md transition-all duration-300 ease-in-out">
-            </div>
-
-            <div className="bg-white p-8 rounded-4xl shadow-sm border border-secondary/5 min-h-100 hover:shadow-md transition-all duration-300 ease-in-out">
-            </div>
-
-            <div className="lg:col-span-3 min-h-50 bg-white p-8 rounded-2xl shadow-sm border border-secondary/10  hover:shadow-md transition-all duration-300 ease-in-out">
-            </div>
-
-        </section>
-    )
+            {/* ... rest of your UI */}
+        </div>
+    );
 }
 
-export default Cards
+export default Cards;

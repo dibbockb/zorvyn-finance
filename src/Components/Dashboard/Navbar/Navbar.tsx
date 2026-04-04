@@ -19,7 +19,7 @@ const Navbar = () => {
 
                 <div className="flex items-center gap-5">
                     <ToggleRole></ToggleRole>
-                    <BellDot size={21} className="text-[#434654] rounded-full"></BellDot>
+                    <BellDot size={21} className="text-[#434654] rounded-full hidden"></BellDot>
                     <div className="hidden lg:flex justify-center items-center gap-3 border-l border-black/30 scale-85">
                         <div className="flex-col text-right">
                             <p className=" font-medium text-base text-black/90">John Doe</p>

@@ -29,44 +29,17 @@ export const MONTHLY_COMPARISON = [
     { month: 'Apr', income: 8200, expenses: 3450 }, // [cite: 166]
 ];
 
-export const TRANSACTIONS = [
-    {
-        id: 't1',
-        date: 'Oct 24, 2024', // [cite: 41, 197]
-        description: 'Apple Store Soho', // [cite: 198]
-        category: 'Technology', // [cite: 131, 198]
-        amount: -1299.00, // [cite: 198]
-        type: 'Expense', // [cite: 131]
-        status: 'Completed', // [cite: 234]
-    },
-    {
-        id: 't2',
-        date: 'Oct 23, 2024', // [cite: 199]
-        description: 'Stripe Payout', // [cite: 198]
-        category: 'Income', // [cite: 235]
-        amount: 8450.00, // [cite: 198]
-        type: 'Income', // [cite: 76]
-        status: 'Completed', // [cite: 237]
-    },
-    {
-        id: 't3',
-        date: 'Oct 22, 2024', // [cite: 41]
-        description: 'Whole Foods Market', // [cite: 41, 79]
-        category: 'Food', // [cite: 41, 80]
-        amount: -142.30, // [cite: 41]
-        type: 'Expense', // [cite: 71, 81]
-        status: 'Completed',
-    },
-    {
-        id: 't4',
-        date: 'Oct 20, 2024', // [cite: 41]
-        description: 'Modern Realty Rent', // [cite: 41]
-        category: 'Housing', // [cite: 41, 149]
-        amount: -2150.00, // [cite: 41]
-        type: 'Expense',
-        status: 'Completed',
-    },
-];
+export type Role = 'Admin' | 'User';
+
+export interface Transaction {
+    id: string;
+    date: string;
+    amount: number;
+    category: 'Food' | 'Housing' | 'Technology' | 'Income' | 'Transport' | 'Entertainment';
+    type: 'Income' | 'Expense';
+    description: string;
+    status: 'Completed' | 'Pending';
+}
 
 export const INSIGHTS = [
     {
