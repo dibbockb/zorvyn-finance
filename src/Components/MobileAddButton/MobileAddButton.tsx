@@ -7,8 +7,6 @@ const MobileAddButton = ({ onClick }: { onClick: () => void }) => {
         role: state.role,
     })));
 
-    // console.log(`role from mobile add btn is ${role}`);
-
     return (
         <button
             disabled={role === 'User'}
