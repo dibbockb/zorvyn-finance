@@ -2,6 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.cache/tsbuildinfo.app.json",
+    "target": "ES2022",                  
     "module": "ESNext",
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
@@ -12,8 +13,8 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-    "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
+    "skipLibCheck": true,               
+    "strict": true,                     
     "paths": {
       "@/*": ["./src/*"]
     }
