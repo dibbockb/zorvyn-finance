@@ -4,6 +4,7 @@ import { useStore, selectTotals } from "../../store/useStore";
 import { useShallow } from 'zustand/react/shallow';
 import Navbar from "../Dashboard/Navbar/Navbar";
 import MobileAddButton from "../MobileAddButton/MobileAddButton";
+import { exportToCSV } from "../../lib/utils/exportUtils";
 
 const TransactionsList = () => {
     const { transactions, role, setRole } = useStore(useShallow((state) => ({
@@ -94,6 +95,7 @@ const TransactionsList = () => {
                         ? 'bg-black/5 text-black/30 cursor-not-allowed'
                         : 'text-primary bg-[#E2E8FC] hover:bg-[#E2E8FC]/80'
                         }`}
+                    onClick={() => { exportToCSV(filteredTransactions) }}
                 >
                     <ArrowDownToLine size={18} />
                     <span className="hidden lg:block">Export</span>

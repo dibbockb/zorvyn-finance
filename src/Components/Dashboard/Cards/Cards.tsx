@@ -4,9 +4,10 @@ import { useStore, selectTotals } from "../../../store/useStore";
 import { useShallow } from 'zustand/react/shallow';
 import { ArrowDownToLine, Plus, } from 'lucide-react'
 import MobileAddButton from "../../MobileAddButton/MobileAddButton";
+import { exportToCSV } from "../../../lib/utils/exportUtils";
 
 const Cards = () => {
-    const { role } = useStore(useShallow((state) => ({ role: state.role })));
+    const { role, transactions } = useStore(useShallow((state) => ({ role: state.role, transactions: state.transactions })));
     const { totalBalance, monthlyIncome, monthlyExpenses } = useStore(
         useShallow((state) => selectTotals(state))
     );
@@ -23,6 +24,8 @@ const Cards = () => {
                 <div className="gap-2 hidden lg:flex">
                     <button
                         disabled={role === 'User'}
+                        onClick={() => { exportToCSV(transactions) }}
+
                         className={`ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${role === 'User'
                             ? 'bg-black/5 text-black/30 cursor-not-allowed'
                             : 'text-primary bg-[#E2E8FC] hover:bg-[#E2E8FC]/80'
