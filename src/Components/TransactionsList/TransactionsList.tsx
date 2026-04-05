@@ -167,7 +167,7 @@ const TransactionsList = () => {
             {/* ///table */}
             <div className="mt-8 ">
                 {/* Desktop View: Traditional Table */}
-                <div className="hidden md:block bg-white rounded-3xl  shadow-sm overflow-hidden">
+                <div className="hidden md:block bg-white rounded-3xl shadow-2xl overflow-hidden">
                     <table className="w-full text-left">
                         <thead>
                             <tr className="border-b border-black/10">

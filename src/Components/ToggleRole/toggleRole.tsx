@@ -4,7 +4,7 @@ export const ToggleRole = () => {
     const { role, setRole } = useStore();
 
     return (
-        <div className="flex items-center gap-3 p-2 rounded-xl  ">
+        <div className="flex items-center gap-3 p-2 rounded-xl lg:pr-5 ">
             <div className="flex bg-background p-3 rounded-lg gap-2">
                 {(['User', 'Admin'] as const).map((r) => (
                     <button
