@@ -104,8 +104,8 @@ const TransactionsList = () => {
 
             <div className="flex flex-col lg:flex-row gap-6 pt-8 ">
                 {/* ///filters */}
-                <div className="flex-1  bg-white p-6 rounded-3xl shadow-sm border border-black/5 flex flex-wrap justify-center lg:justify-start items-center  gap-8">
-                    <div className="flex flex-col gap-2">
+                <div className="flex-1  bg-white p-6 rounded-3xl shadow-md flex flex-wrap justify-center lg:justify-start items-center  gap-8">
+                    <div className="flex flex-col gap-2 ">
                         <label className="text-[10px] font-black uppercase text-black/40 tracking-widest text-center lg:text-start lg:pl-1">Date Range</label>
                         <div className="relative group">
                             <select
@@ -165,12 +165,12 @@ const TransactionsList = () => {
 
 
             {/* ///table */}
-            <div className="mt-8">
+            <div className="mt-8 ">
                 {/* Desktop View: Traditional Table */}
-                <div className="hidden md:block bg-white rounded-3xl border border-black/5 shadow-sm overflow-hidden">
-                    <table className="w-full text-left border-collapse">
+                <div className="hidden md:block bg-white rounded-3xl  shadow-sm overflow-hidden">
+                    <table className="w-full text-left">
                         <thead>
-                            <tr className="border-b border-black/5">
+                            <tr className="border-b border-black/10">
                                 <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest">Date</th>
                                 <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest">Description</th>
                                 <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest text-right">Amount</th>

@@ -6,7 +6,7 @@ const SpendingBreakdown = () => {
     const total = SUMMARY_STATS.monthlyExpenses;
 
     return (
-        <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-secondary/5 h-full flex flex-col">
+        <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm h-full flex flex-col">
             <h3 className="text-black font-bold text-sm  lg:text-2xl mb-6">Spending Breakdown</h3>
 
             <div className="relative flex items-center justify-center" style={{ height: 220 }}>

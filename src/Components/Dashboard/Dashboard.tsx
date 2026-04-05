@@ -14,10 +14,10 @@ const Dashboard = () => {
                 <div className="lg:col-span-2">
                     <BalanceChart />
                 </div>
-                <div className="lg:col-span-1">
+                <div className="lg:col-span-1 shadow-xl">
                     <SpendingBreakdown />
                 </div>
-                <div className="lg:col-span-3">
+                <div className="lg:col-span-3 shadow-xl">
                     <RecentTransactions></RecentTransactions>
                 </div>
             </div>

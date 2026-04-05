@@ -8,7 +8,7 @@ const BalanceTrend = () => {
     const [activePeriod, setActivePeriod] = useState<Period>('7D');
 
     return (
-        <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-secondary/5 h-full flex flex-col">
+        <div className="bg-white p-4 lg:p-8 rounded-2xl h-full flex flex-col shadow-xl">
             <div className="flex justify-between items-center mb-6">
                 <div className="">
                     <h3 className="text-black font-bold text-sm  lg:text-2xl ">Balance Trend</h3>
@@ -48,7 +48,7 @@ const BalanceTrend = () => {
                             tick={{ fill: '#434654', fontSize: 10, fontWeight: 700 }}
                             dy={10}
                         />
-                        <YAxis hide />   {/* Simplified for now */}
+                        <YAxis hide />
                         <Tooltip
                             contentStyle={{
                                 borderRadius: '12px',

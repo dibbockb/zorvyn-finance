@@ -26,7 +26,7 @@ const StatCard = ({ title, amount, type, percentage }: StatCardProps) => {
     };
 
     return (
-        <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-secondary/5 flex flex-col gap-4 hover:shadow-md transition-all">
+        <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-xl flex flex-col gap-4 hover:shadow-md transition-all">
             <div className="flex justify-between items-center">
                 <div className={`p-3 rounded-xl ${bgColors[type]}`}>
                     {icons[type]}

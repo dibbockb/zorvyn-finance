@@ -15,7 +15,7 @@ const RecentTransactions = () => {
     }
 
     return (
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-secondary/5 h-full">
+        <div className="bg-white p-6 rounded-2xl shadow-sm h-full">
             <div className="flex justify-between items-center mb-6">
                 <h3 className="text-black font-bold text-xl">Recent Transactions</h3>
                 <Link to={"/transactions"} className="text-primary text-sm font-bold px-2 py-1 rounded text-sm text-primary font-bold hover:bg-[#E2E8FC] transition-all duration-100 ease-in-out">View All</Link>
