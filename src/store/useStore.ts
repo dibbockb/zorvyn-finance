@@ -20,7 +20,7 @@ export const useStore = create<FinanceState>()(
             })),
 
         }),
-        { name: 'finance-storage' }
+        { name: 'zorvyn-ledger' }
     )
 );
 
