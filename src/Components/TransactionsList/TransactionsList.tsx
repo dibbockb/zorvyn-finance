@@ -5,10 +5,17 @@ import { useShallow } from 'zustand/react/shallow';
 import Navbar from "../Dashboard/Navbar/Navbar";
 
 const TransactionsList = () => {
-    const { transactions } = useStore(useShallow((state) => ({
+
+    const { transactions, role, setRole } = useStore(useShallow((state) => ({
         transactions: state.transactions,
+        role: state.role,
+        setRole: state.setRole,
         ...selectTotals(state)
     })));
+
+    const toggleRole = () => {
+        setRole(role === 'Admin' ? 'User' : 'Admin')
+    }
 
     const [dateRange, setDateRange] = useState('30');
     const [filterType, setFilterType] = useState<'All' | 'Income' | 'Expense'>('All');
@@ -54,14 +61,25 @@ const TransactionsList = () => {
         }
     };
 
-
     return (
         <section className="h-screen bg-[#faf8ff] rounded shadow-xl px-4 lg:px-10 py-3 pb-20 lg:pb-10 overflow-y-auto">
             <Navbar />
-            <div className="mt-4 text-primary bg-primary/10 border border-primary/20 rounded-xl flex items-center gap-2 p-3 px-6 text-xs lg:text-sm">
-                <Eye size={16} className="shrink-0" />
-                <p className="font-bold flex-1">You are currently in View Only mode. Administrative actions are restricted.</p>
-                <button className="hidden lg:block hover:underline font-black">Change Role</button>
+            <div className={`mt-4 text-center lg:text-left flex items-center gap-2 p-3 px-6 text-xs lg:text-sm rounded-xl border transition-all duration-300 ${role === 'Admin'
+                ? 'text-tertiary bg-tertiary/10 border-tertiary/20'
+                : 'text-primary bg-primary/10 border-primary/20'
+                }`}>
+                <Eye size={16} className="shrink-0 hidden lg:block" />
+                <p className="font-bold flex-1 max-w-60 lg:max-w-fit mx-auto lg:mx-0">
+                    {role === 'Admin'
+                        ? "Full Access: Administrative actions and exports are enabled."
+                        : "You are currently in View Only mode. Administrative actions are restricted."}
+                </p>
+                <button
+                    onClick={toggleRole}
+                    className="hidden lg:block hover:underline font-black tracking-tighter ml-auto"
+                >
+                    Switch to {role === 'Admin' ? 'User' : 'Admin'}
+                </button>
             </div>
 
             <div className="flex items-center pt-8">
@@ -69,7 +87,13 @@ const TransactionsList = () => {
                     <h1 className="text-2xl text-black font-bold pb-1">Transactions</h1>
                     <p className="text-black/60 font-medium text-sm max-w-75 lg:max-w-125">Detailed ledger of all institutional movements.</p>
                 </div>
-                <button className="ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-primary font-bold bg-[#E2E8FC] hover:bg-[#E2E8FC]/80 transition-all duration-100 ease-in-out">
+                <button
+                    disabled={role === 'User'}
+                    className={`ml-auto flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${role === 'User'
+                            ? 'bg-black/5 text-black/30 cursor-not-allowed'
+                            : 'text-primary bg-[#E2E8FC] hover:bg-[#E2E8FC]/80'
+                        }`}
+                >
                     <ArrowDownToLine size={18} />
                     <span className="hidden lg:block">Export</span>
                 </button>
@@ -120,8 +144,8 @@ const TransactionsList = () => {
                             >
                                 <option className="font-bold" value="All">All Sectors</option>
                                 <option className="font-bold" value="Technology">Technology</option>
-                                <option className="font-bold" value="Income">Income</option>
                                 <option className="font-bold" value="Food">Food</option>
+                                <option className="font-bold" value="Income">Income</option>
                                 <option className="font-bold" value="Transport">Transport</option>
                                 <option className="font-bold" value="Housing">Housing</option>
                             </select>
