@@ -8,6 +8,7 @@ import { useShallow } from 'zustand/react/shallow';
 import Navbar from '../Dashboard/Navbar/Navbar';
 import MobileAddButton from '../MobileAddButton/MobileAddButton';
 import { AddTransactionModal } from '../AddTransactionModal/AddTransactionModal';
+import { motion } from "framer-motion";
 
 const Insights = () => {
     const { transactions, role } = useStore(useShallow((state) => ({
@@ -71,7 +72,11 @@ const Insights = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <section className="min-h-screen bg-[#faf8ff] rounded shadow-xl px-4 lg:px-10 py-3 pb-20 lg:pb-10">
+        <motion.section
+            initial={{ opacity: 0, filter: "blur(15px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="min-h-screen bg-[#faf8ff] rounded shadow-xl px-4 lg:px-10 py-3 pb-20 lg:pb-10">
             <AddTransactionModal open={isOpen} onOpenChange={setIsOpen} />
             <MobileAddButton onClick={() => setIsOpen(true)}></MobileAddButton>
 
@@ -240,7 +245,7 @@ const Insights = () => {
                 ))}
             </div>
 
-        </section>
+        </motion.section>
     );
 };
 

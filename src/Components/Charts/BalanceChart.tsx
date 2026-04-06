@@ -45,9 +45,6 @@ const BalanceTrend = () => {
         txBeforePeriod.forEach(tx => {
             adjustedBalance -= (tx.type === 'Income' ? tx.amount : -tx.amount);
         });
-        txBeforePeriod.forEach(tx => {
-            adjustedBalance -= (tx.type === 'Income' ? tx.amount : -tx.amount);
-        });
 
         filteredTx.forEach(tx => {
             const txDate = parseDate(tx.date);

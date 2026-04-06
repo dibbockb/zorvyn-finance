@@ -6,6 +6,8 @@ import Navbar from "../Dashboard/Navbar/Navbar";
 import MobileAddButton from "../MobileAddButton/MobileAddButton";
 import { exportToCSV } from "../../lib/utils/exportUtils";
 import { AddTransactionModal } from "../AddTransactionModal/AddTransactionModal";
+import { motion } from "framer-motion";
+
 
 const TransactionsList = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -63,8 +65,13 @@ const TransactionsList = () => {
         }
     };
 
+
     return (
-        <section className="h-screen bg-[#faf8ff] rounded shadow-xl px-4 lg:px-10 py-3 pb-20 lg:pb-10 overflow-y-auto">
+        <motion.section
+            initial={{ opacity: 0, filter: "blur(15px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="h-screen bg-[#faf8ff] rounded shadow-xl px-4 lg:px-10 py-3 pb-20 lg:pb-10 overflow-y-auto">
             <Navbar />
             <AddTransactionModal open={isOpen} onOpenChange={setIsOpen} />
             <MobileAddButton onClick={() => setIsOpen(true)}></MobileAddButton>
@@ -106,7 +113,6 @@ const TransactionsList = () => {
             </div>
 
             <div className="flex flex-col lg:flex-row gap-6 pt-8 ">
-                {/* ///filters */}
                 <div className="flex-1  bg-white p-6 rounded-3xl shadow-md flex flex-wrap justify-center lg:justify-start items-center  gap-8">
                     <div className="flex flex-col gap-2 ">
                         <label className="text-[10px] font-black uppercase text-black/40 tracking-widest text-center lg:text-start lg:pl-1">Date Range</label>
@@ -151,7 +157,6 @@ const TransactionsList = () => {
                                 <option className="font-bold" value="All">All Sectors</option>
                                 <option className="font-bold" value="Technology">Technology</option>
                                 <option className="font-bold" value="Food">Food</option>
-                                <option className="font-bold" value="Income">Income</option>
                                 <option className="font-bold" value="Transport">Transport</option>
                                 <option className="font-bold" value="Housing">Housing</option>
                             </select>
@@ -167,9 +172,7 @@ const TransactionsList = () => {
             </div>
 
 
-            {/* ///table */}
             <div className="mt-8 ">
-                {/* Desktop View: Traditional Table */}
                 <div className="hidden md:block bg-white rounded-3xl shadow-2xl overflow-hidden">
                     <table className="w-full text-left">
                         <thead>
@@ -183,25 +186,27 @@ const TransactionsList = () => {
                         <tbody className="divide-y divide-black/10">
                             {filteredTransactions.length > 0 ? (
                                 filteredTransactions.map((tx) => (
-                                    <tr key={tx.id} className="hover:bg-primary/5 transition-all duration-250 group">
-                                        <td className="px-8 py-6 text-sm font-bold text-black/60">{tx.date}, 2026</td>
-                                        <td className="px-8 py-6">
-                                            <div className="flex items-center gap-4">
-                                                <div className="p-2.5 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
-                                                    {getCategoryIcon(tx.category)}
+                                    <div>
+                                        <tr key={tx.id} className="hover:bg-primary/5 transition-all duration-250 group">
+                                            <td className="px-8 py-6 text-sm font-bold text-black/60">{tx.date}, 2026</td>
+                                            <td className="px-8 py-6">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="p-2.5 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
+                                                        {getCategoryIcon(tx.category)}
+                                                    </div>
+                                                    <span className="text-sm font-black text-black/80">{tx.description}</span>
                                                 </div>
-                                                <span className="text-sm font-black text-black/80">{tx.description}</span>
-                                            </div>
-                                        </td>
-                                        <td className={`px-8 py-6 text-sm font-black text-right ${tx.type === 'Income' ? 'text-tertiary' : 'text-red-600'}`}>
-                                            {tx.type === 'Income' ? '+' : '-'}${tx.amount.toLocaleString()}
-                                        </td>
-                                        <td className="px-8 py-6 text-center">
-                                            <div className="flex justify-center">
-                                                {tx.status === 'Completed' ? <CheckCircle2 size={20} className="text-tertiary" /> : <Clock size={20} className="text-black/20" />}
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td className={`px-8 py-6 text-sm font-black text-right ${tx.type === 'Income' ? 'text-tertiary' : 'text-red-600'}`}>
+                                                {tx.type === 'Income' ? '+' : '-'}${tx.amount.toLocaleString()}
+                                            </td>
+                                            <td className="px-8 py-6 text-center">
+                                                <div className="flex justify-center">
+                                                    {tx.status === 'Completed' ? <CheckCircle2 size={20} className="text-tertiary" /> : <Clock size={20} className="text-black/20" />}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </div>
                                 ))
                             ) : <tr>
                                 <td colSpan={4} className="px-8 py-24 text-center">
@@ -220,7 +225,6 @@ const TransactionsList = () => {
                     </table>
                 </div>
 
-                {/* Mobile View: Vertical Cards */}
                 <div className="md:hidden flex flex-col gap-4">
                     {filteredTransactions.length > 0 ? (
                         filteredTransactions.map((tx) => (
@@ -251,7 +255,7 @@ const TransactionsList = () => {
                     )}
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 
