@@ -1,9 +1,11 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { RECENT_TRANSACTIONS } from '../../lib/mockdata/data';
 import { useMemo } from 'react';
+import { useStore } from '@/store/useStore';
 
 
 const SpendingBreakdown = () => {
+    const transactions = useStore((state) => state.transactions);
+
     const categoryColors: { [key: string]: string } = {
         Housing: '#0047AB',
         Food: '#006B3C',
@@ -14,14 +16,14 @@ const SpendingBreakdown = () => {
 
     const { breakdown, total } = useMemo(() => {
         const expensesByCategory: { [key: string]: number } = {};
-        RECENT_TRANSACTIONS.forEach((tx) => {
+        transactions.forEach((tx) => {
             if (tx.type === 'Expense') {
                 if (!expensesByCategory[tx.category]) {
                     expensesByCategory[tx.category] = 0;
                 }
                 expensesByCategory[tx.category] += tx.amount;
             }
-        });
+        }, [transactions]);
 
         const totalExpenses = Object.values(expensesByCategory).reduce((sum, amount) => sum + amount, 0);
         const breakdownData = Object.entries(expensesByCategory)
@@ -34,14 +36,14 @@ const SpendingBreakdown = () => {
             .sort((a, b) => b.amount - a.amount);
 
         return { breakdown: breakdownData, total: totalExpenses };
-    }, []);
+    }, [transactions]);
 
     return (
         <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm h-full flex flex-col">
             <h3 className="text-black font-bold text-sm  lg:text-2xl mb-6">Spending Breakdown</h3>
 
             <div className="relative flex items-center justify-center" style={{ height: 220 }}>
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer key={transactions.length} width="100%" height="100%">
                     <PieChart>
                         <Pie
                             data={breakdown}
@@ -65,7 +67,7 @@ const SpendingBreakdown = () => {
 
                 <div className="absolute flex flex-col items-center justify-center pointer-events-none">
                     <span className="text-black/50 text-xs font-semibold uppercase tracking-widest">Total</span>
-                    <span className="text-black font-bold text-2xl">{`$${total.toFixed(2)}`}</span>
+                    <span className="text-black font-bold text-2xl">{`$${total.toFixed(0)}`}</span>
                 </div>
             </div>
 
