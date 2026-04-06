@@ -6,6 +6,14 @@ export const SUMMARY_STATS = {
     savingsRate: 15,
     projectedBalance: 48000,
 };
+export const MONTHLY_COMPARISON = [
+    { month: 'Jan', income: 7500, expenses: 3200 },
+    { month: 'Feb', income: 7800, expenses: 3100 },
+    { month: 'Mar', income: 8100, expenses: 3500 },
+    { month: 'Apr', income: 8200, expenses: 3450 },
+    { month: 'May', income: 7900, expenses: 3800 },
+    { month: 'Jun', income: 8400, expenses: 3200 },
+];
 
 export const SPENDING_BREAKDOWN = [
     { category: 'Housing', value: 42, color: '#0047AB' },
