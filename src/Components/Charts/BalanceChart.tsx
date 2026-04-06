@@ -4,7 +4,6 @@ import { useStore } from '@/store/useStore';
 
 const BalanceTrend = () => {
     const transactions = useStore((state) => state.transactions);
-
     type Period = typeof periods[number];
     const periods = ['7D', '15D', '1M'] as const;
     const [activePeriod, setActivePeriod] = useState<Period>('7D');

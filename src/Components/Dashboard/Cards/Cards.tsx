@@ -2,14 +2,10 @@ import StatCard from "../../Statcard/StatCard";
 import { useStore, selectTotals } from "../../../store/useStore";
 import { useShallow } from 'zustand/react/shallow';
 import { ArrowDownToLine, Plus, } from 'lucide-react'
-import MobileAddButton from "../../MobileAddButton/MobileAddButton";
 import { exportToCSV } from "../../../lib/utils/exportUtils";
-import { AddTransactionModal } from "@/Components/AddTransactionModal/AddTransactionModal";
-import { useState } from "react";
+import { useModal } from "@/store/ModalContext";
 
 const Cards = () => {
-
-    const [isOpen, setIsOpen] = useState(false);
     const { role, transactions, totalBalance, monthlyIncome, monthlyExpenses } = useStore(
         useShallow((state) => {
             const totals = selectTotals(state);
@@ -22,12 +18,10 @@ const Cards = () => {
             };
         })
     );
+    const { isOpen, setIsOpen } = useModal();
 
     return (
         <div className="flex flex-col gap-6 pt-2">
-            <AddTransactionModal open={isOpen} onOpenChange={setIsOpen} />
-            <MobileAddButton onClick={() => setIsOpen(true)}></MobileAddButton>
-
             <div className="hidden lg:flex justify-between items-center pt-5">
                 <div className="pl-1">
                     <h1 className="hidden lg:block text-2xl text-black font-bold pb-1 ">Financial Overview</h1>

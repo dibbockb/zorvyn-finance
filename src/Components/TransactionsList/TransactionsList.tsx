@@ -3,15 +3,13 @@ import { useMemo, useState } from "react";
 import { useStore } from "../../store/useStore";
 import { useShallow } from 'zustand/react/shallow';
 import Navbar from "../Dashboard/Navbar/Navbar";
-import MobileAddButton from "../MobileAddButton/MobileAddButton";
 import { exportToCSV } from "../../lib/utils/exportUtils";
-import { AddTransactionModal } from "../AddTransactionModal/AddTransactionModal";
 import { motion, Variants } from "framer-motion";
+import { useModal } from "@/store/ModalContext";
 
 
 const TransactionsList = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
+    const { isOpen, setIsOpen } = useModal();
 
     const { transactions, role, setRole } = useStore(useShallow((state) => ({
         transactions: state.transactions,
@@ -88,8 +86,6 @@ const TransactionsList = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="h-screen bg-[#faf8ff] rounded shadow-xl px-4 lg:px-10 py-3 pb-20 lg:pb-10 overflow-y-auto">
             <Navbar />
-            <AddTransactionModal open={isOpen} onOpenChange={setIsOpen} />
-            <MobileAddButton onClick={() => setIsOpen(true)}></MobileAddButton>
 
             <div className={`mt-4 text-center lg:text-left flex items-center gap-2 p-3 px-6 text-xs lg:text-sm rounded-xl border transition-all duration-300 ${role === 'Admin'
                 ? 'text-tertiary bg-tertiary/10 border-tertiary/20'
