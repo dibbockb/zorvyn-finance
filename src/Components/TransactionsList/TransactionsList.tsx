@@ -6,11 +6,12 @@ import Navbar from "../Dashboard/Navbar/Navbar";
 import MobileAddButton from "../MobileAddButton/MobileAddButton";
 import { exportToCSV } from "../../lib/utils/exportUtils";
 import { AddTransactionModal } from "../AddTransactionModal/AddTransactionModal";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 
 const TransactionsList = () => {
     const [isOpen, setIsOpen] = useState(false);
+
 
     const { transactions, role, setRole } = useStore(useShallow((state) => ({
         transactions: state.transactions,
@@ -65,6 +66,20 @@ const TransactionsList = () => {
         }
     };
 
+    //motion related
+    const container = {
+        hidden: {},
+        show: {
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const item: Variants = {
+        hidden: { opacity: 0, y: 0 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" as const } }
+    };
 
     return (
         <motion.section
@@ -173,7 +188,12 @@ const TransactionsList = () => {
 
 
             <div className="mt-8 ">
-                <div className="hidden md:block bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="hidden md:block bg-white rounded-3xl shadow-2xl overflow-hidden">
                     <table className="w-full text-left">
                         <thead>
                             <tr className="border-b border-black/10">
@@ -183,30 +203,29 @@ const TransactionsList = () => {
                                 <th className="px-8 py-5 text-[10px] font-black uppercase text-black/30 tracking-widest text-center">Status</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-black/10">
+                        <tbody className="divide-y divide-black/10 w-full">
                             {filteredTransactions.length > 0 ? (
                                 filteredTransactions.map((tx) => (
-                                    <div>
-                                        <tr key={tx.id} className="hover:bg-primary/5 transition-all duration-250 group">
-                                            <td className="px-8 py-6 text-sm font-bold text-black/60">{tx.date}, 2026</td>
-                                            <td className="px-8 py-6">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="p-2.5 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
-                                                        {getCategoryIcon(tx.category)}
-                                                    </div>
-                                                    <span className="text-sm font-black text-black/80">{tx.description}</span>
+
+                                    <motion.tr key={tx.id} variants={item} className="hover:bg-primary/5 transition-all duration-250 group">
+                                        <td className="px-8 py-6 text-sm font-bold text-black/60">{tx.date}, 2026</td>
+                                        <td className="px-8 py-6">
+                                            <div className="flex items-center gap-4">
+                                                <div className="p-2.5 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
+                                                    {getCategoryIcon(tx.category)}
                                                 </div>
-                                            </td>
-                                            <td className={`px-8 py-6 text-sm font-black text-right ${tx.type === 'Income' ? 'text-tertiary' : 'text-red-600'}`}>
-                                                {tx.type === 'Income' ? '+' : '-'}${tx.amount.toLocaleString()}
-                                            </td>
-                                            <td className="px-8 py-6 text-center">
-                                                <div className="flex justify-center">
-                                                    {tx.status === 'Completed' ? <CheckCircle2 size={20} className="text-tertiary" /> : <Clock size={20} className="text-black/20" />}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </div>
+                                                <span className="text-sm font-black text-black/80">{tx.description}</span>
+                                            </div>
+                                        </td>
+                                        <td className={`px-8 py-6 text-sm font-black text-right ${tx.type === 'Income' ? 'text-tertiary' : 'text-red-600'}`}>
+                                            {tx.type === 'Income' ? '+' : '-'}${tx.amount.toLocaleString()}
+                                        </td>
+                                        <td className="px-8 py-6 text-center">
+                                            <div className="flex justify-center">
+                                                {tx.status === 'Completed' ? <CheckCircle2 size={20} className="text-tertiary" /> : <Clock size={20} className="text-black/20" />}
+                                            </div>
+                                        </td>
+                                    </motion.tr>
                                 ))
                             ) : <tr>
                                 <td colSpan={4} className="px-8 py-24 text-center">
@@ -223,7 +242,7 @@ const TransactionsList = () => {
                             </tr>}
                         </tbody>
                     </table>
-                </div>
+                </motion.div>
 
                 <div className="md:hidden flex flex-col gap-4">
                     {filteredTransactions.length > 0 ? (

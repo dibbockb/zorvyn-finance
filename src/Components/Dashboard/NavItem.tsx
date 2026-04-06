@@ -14,6 +14,6 @@ export const NavItem = ({ to, icon: Icon, label }: NavItemProps) => (
          ${isActive ? 'bg-primary/30 shadow-lg text-[#003d9b]' : 'hover:bg-primary/30 hover:shadow-lg hover:text-[#003d9b]'}`
     }>
         <Icon size={22} strokeWidth={2} />
-        <span className="font-medium">{label}</span>
+        <span className="font-bold">{label}</span>
     </NavLink>
 );
