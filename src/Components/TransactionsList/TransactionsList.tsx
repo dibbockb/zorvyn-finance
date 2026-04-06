@@ -1,6 +1,6 @@
 import { ArrowDownToLine, Eye, ChevronDown, ListFilter, Terminal, Briefcase, ShoppingBag, Plane, Home, CheckCircle2, Clock } from "lucide-react";
 import { useMemo, useState } from "react";
-import { useStore, selectTotals } from "../../store/useStore";
+import { useStore } from "../../store/useStore";
 import { useShallow } from 'zustand/react/shallow';
 import Navbar from "../Dashboard/Navbar/Navbar";
 import MobileAddButton from "../MobileAddButton/MobileAddButton";
@@ -14,7 +14,6 @@ const TransactionsList = () => {
         transactions: state.transactions,
         role: state.role,
         setRole: state.setRole,
-        ...selectTotals(state)
     })));
 
     const toggleRole = () => {

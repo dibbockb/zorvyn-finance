@@ -7,72 +7,11 @@ export const SUMMARY_STATS = {
     projectedBalance: 48000,
 };
 
-export const BALANCE_TREND = {
-    '7D': [
-        { date: '29 Mar', balance: 47850 },
-        { date: '30 Mar', balance: 48520 },
-        { date: '31 Mar', balance: 49210 },
-        { date: '01 Apr', balance: 49870 },
-        { date: '02 Apr', balance: 50340 },
-        { date: '03 Apr', balance: 49780 },
-        { date: '04 Apr', balance: 51000 },
-    ],
-    '15D': [
-        { date: '21 Mar', balance: 46120 },
-        { date: '22 Mar', balance: 45580 },
-        { date: '23 Mar', balance: 46890 },
-        { date: '24 Mar', balance: 47430 },
-        { date: '25 Mar', balance: 48150 },
-        { date: '26 Mar', balance: 47760 },
-        { date: '27 Mar', balance: 48340 },
-        { date: '28 Mar', balance: 47990 },
-        { date: '29 Mar', balance: 47850 },
-        { date: '30 Mar', balance: 48520 },
-        { date: '31 Mar', balance: 49210 },
-        { date: '01 Apr', balance: 49870 },
-        { date: '02 Apr', balance: 50340 },
-        { date: '03 Apr', balance: 49780 },
-        { date: '04 Apr', balance: 51000 },
-    ],
-    '1M': [
-        { date: '04 Mar', balance: 41230 },
-        { date: '06 Mar', balance: 42890 },
-        { date: '08 Mar', balance: 43560 },
-        { date: '10 Mar', balance: 44970 },
-        { date: '12 Mar', balance: 45820 },
-        { date: '14 Mar', balance: 47210 },
-        { date: '16 Mar', balance: 48140 },
-        { date: '18 Mar', balance: 47680 },
-        { date: '20 Mar', balance: 48950 },
-        { date: '22 Mar', balance: 45580 },
-        { date: '23 Mar', balance: 46890 },
-        { date: '24 Mar', balance: 47430 },
-        { date: '25 Mar', balance: 48150 },
-        { date: '26 Mar', balance: 47760 },
-        { date: '27 Mar', balance: 48340 },
-        { date: '28 Mar', balance: 47990 },
-        { date: '29 Mar', balance: 47850 },
-        { date: '30 Mar', balance: 48520 },
-        { date: '31 Mar', balance: 49210 },
-        { date: '01 Apr', balance: 49870 },
-        { date: '02 Apr', balance: 50340 },
-        { date: '03 Apr', balance: 49780 },
-        { date: '04 Apr', balance: 51000 },
-    ],
-};
-
 export const SPENDING_BREAKDOWN = [
     { category: 'Housing', value: 42, color: '#0047AB' },
     { category: 'Food & Beverage', value: 28, color: '#006B3C' },
     { category: 'Transport', value: 15, color: '#C41E3A' },
     { category: 'Entertainment', value: 15, color: '#666666' },
-];
-
-export const MONTHLY_COMPARISON = [
-    { month: 'Jan', income: 7500, expenses: 3200 },
-    { month: 'Feb', income: 7800, expenses: 3100 },
-    { month: 'Mar', income: 8100, expenses: 3500 },
-    { month: 'Apr', income: 8200, expenses: 3450 },
 ];
 
 export type Role = 'Admin' | 'User';
@@ -104,71 +43,71 @@ export const INSIGHTS = [
 
 export const RECENT_TRANSACTIONS: Transaction[] = [
     {
-        id: 'tx-008',
-        date: '04 Apr',
-        amount: 899.00,
+        id: 'tx-001',
+        date: '05 Apr',
+        amount: 3509,
         category: 'Technology',
         type: 'Expense',
-        description: 'Notion Business Plan - Annual',
+        description: 'Notion Business Plan - Annual (renewal)',
         status: 'Completed'
     },
     {
-        id: 'tx-009',
+        id: 'tx-002',
         date: '04 Apr',
-        amount: 12400.00,
+        amount: 12450.00,
         category: 'Income',
         type: 'Income',
-        description: 'Client Payment - Acme Corp (Project Milestone)',
+        description: 'Client Payment - Acme Corp (Project Milestone #2)',
         status: 'Completed'
     },
     {
-        id: 'tx-010',
+        id: 'tx-003',
         date: '03 Apr',
-        amount: 1240.50,
-        category: 'Technology',
+        amount: 1850.00,
+        category: 'Transport',
         type: 'Expense',
-        description: 'Meta Ads Campaign - Q2 Lead Generation',
+        description: 'Meta Ads Campaign - Q2 Lead Generation (mid-month)',
         status: 'Completed'
     },
     {
-        id: 'tx-011',
+        id: 'tx-004',
         date: '03 Apr',
         amount: 8750.00,
         category: 'Income',
         type: 'Income',
-        description: 'Stripe Payout - SaaS Subscriptions',
+        description: 'Stripe Payout - SaaS Subscription Revenue',
         status: 'Completed'
     },
     {
-        id: 'tx-012',
+        id: 'tx-005',
         date: '02 Apr',
-        amount: 320.00,
+        amount: 420.00,
         category: 'Transport',
         type: 'Expense',
-        description: 'Flight - SFO to NYC (Client Pitch)',
+        description: 'Flight - SFO to NYC (Client Pitch Meeting)',
         status: 'Completed'
     },
     {
-        id: 'tx-013',
-        date: '02 Apr',
-        amount: 4500.00,
+        id: 'tx-006',
+        date: '01 Apr',
+        amount: 3200.00,
         category: 'Income',
         type: 'Income',
-        description: 'Retainer Fee - Vertex Solutions',
+        description: 'Retainer Fee - Vertex Solutions (April)',
         status: 'Completed'
     },
     {
-        id: 'tx-014',
-        date: '01 Apr',
-        amount: 189.99,
+        id: 'tx-007',
+        date: '31 Mar',
+        amount: 199.00,
         category: 'Technology',
         type: 'Expense',
-        description: 'Figma Professional - Team License',
+        description: 'Figma Professional - Team License (annual)',
         status: 'Completed'
     },
     {
-        id: 'tx-015',
-        date: '01 Apr',
+        id: 'tx-008',
+        date: '30 Mar',
         amount: 2850.00,
         category: 'Income',
         type: 'Income',
@@ -176,17 +115,17 @@ export const RECENT_TRANSACTIONS: Transaction[] = [
         status: 'Completed'
     },
     {
-        id: 'tx-016',
-        date: '31 Mar',
-        amount: 450.00,
-        category: 'Housing',
+        id: 'tx-009',
+        date: '29 Mar',
+        amount: 275.00,
+        category: 'Transport',
         type: 'Expense',
-        description: 'Office Supplies & Equipment (Staples)',
+        description: 'Office Supplies & Equipment (Staples - printer ink, paper, misc)',
         status: 'Completed'
     },
     {
-        id: 'tx-017',
-        date: '31 Mar',
+        id: 'tx-010',
+        date: '28 Mar',
         amount: 15200.00,
         category: 'Income',
         type: 'Income',
@@ -194,39 +133,174 @@ export const RECENT_TRANSACTIONS: Transaction[] = [
         status: 'Completed'
     },
     {
-        id: 'tx-018',
-        date: '30 Mar',
-        amount: 2750.00,
+        id: 'tx-011',
+        date: '27 Mar',
+        amount: 89.99,
         category: 'Technology',
         type: 'Expense',
-        description: 'Salesforce Enterprise - Monthly',
+        description: 'Zoom Pro Annual Subscription',
         status: 'Completed'
     },
     {
-        id: 'tx-019',
-        date: '29 Mar',
-        amount: 680.75,
-        category: 'Housing',
+        id: 'tx-012',
+        date: '26 Mar',
+        amount: 1240.00,
+        category: 'Transport',
+        type: 'Expense',
+        description: 'Google Ads - Search Campaign (March)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-013',
+        date: '25 Mar',
+        amount: 450.00,
+        category: 'Transport',
+        type: 'Expense',
+        description: 'Client Dinner - The Capital Grille (NYC pitch follow-up)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-014',
+        date: '24 Mar',
+        amount: 6200.00,
+        category: 'Income',
+        type: 'Income',
+        description: 'Bank Transfer - Freelance Contract (Q1 Final)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-015',
+        date: '23 Mar',
+        amount: 125.00,
+        category: 'Transport',
         type: 'Expense',
         description: 'Legal Consultation - Contract Review',
         status: 'Completed'
     },
     {
-        id: 'tx-020',
-        date: '28 Mar',
-        amount: 95.00,
-        category: 'Food',
+        id: 'tx-016',
+        date: '22 Mar',
+        amount: 299.00,
+        category: 'Technology',
         type: 'Expense',
-        description: 'Client Dinner - The Capital Grille',
+        description: 'Salesforce Starter Suite - Monthly (3 users)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-017',
+        date: '20 Mar',
+        amount: 9800.00,
+        category: 'Income',
+        type: 'Income',
+        description: 'Milestone Payment - Apex Dynamics (Web App Phase 1)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-018',
+        date: '18 Mar',
+        amount: 65.00,
+        category: 'Transport',
+        type: 'Expense',
+        description: 'Internet & Phone Bill (Business Line)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-019',
+        date: '17 Mar',
+        amount: 4500.00,
+        category: 'Income',
+        type: 'Income',
+        description: 'Retainer - Horizon Creative (March)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-020',
+        date: '15 Mar',
+        amount: 189.00,
+        category: 'Technology',
+        type: 'Expense',
+        description: 'Adobe Creative Cloud - Monthly',
         status: 'Completed'
     },
     {
         id: 'tx-021',
-        date: '28 Mar',
+        date: '14 Mar',
+        amount: 12400.00,
+        category: 'Income',
+        type: 'Income',
+        description: 'Client Payment - Acme Corp (Project Milestone #1)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-022',
+        date: '12 Mar',
+        amount: 220.00,
+        category: 'Transport',
+        type: 'Expense',
+        description: 'Uber/Lyft - Airport & Client Meetings (NYC)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-023',
+        date: '10 Mar',
+        amount: 1450.00,
+        category: 'Transport',
+        type: 'Expense',
+        description: 'LinkedIn Ads - B2B Lead Generation',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-024',
+        date: '08 Mar',
+        amount: 75.50,
+        category: 'Transport',
+        type: 'Expense',
+        description: 'Wire Transfer & Payment Processing Fees',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-025',
+        date: '07 Mar',
         amount: 6200.00,
         category: 'Income',
         type: 'Income',
         description: 'Bank Transfer - Freelance Contract (Q1)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-026',
+        date: '05 Mar',
+        amount: 350.00,
+        category: 'Transport',
+        type: 'Expense',
+        description: 'Team Lunch - Strategy Meeting',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-027',
+        date: '03 Mar',
+        amount: 899.00,
+        category: 'Technology',
+        type: 'Expense',
+        description: 'Notion Business Plan - Annual (prorated or add-on)',
+        status: 'Completed'
+    },
+    {
+        id: 'tx-028',
+        date: '02 Mar',
+        amount: 2850.00,
+        category: 'Income',
+        type: 'Income',
+        description: 'Invoice Payment - Lumora Inc. (Partial)',
+        status: 'Pending'
+    },
+    {
+        id: 'tx-029',
+        date: '01 Mar',
+        amount: 120.00,
+        category: 'Housing',
+        type: 'Expense',
+        description: 'Miscellaneous Office Supplies (Amazon)',
         status: 'Completed'
     }
 ];

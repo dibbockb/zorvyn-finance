@@ -1,9 +1,40 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { SPENDING_BREAKDOWN, SUMMARY_STATS } from '../../lib/mockdata/data';
+import { RECENT_TRANSACTIONS } from '../../lib/mockdata/data';
+import { useMemo } from 'react';
 
 
 const SpendingBreakdown = () => {
-    const total = SUMMARY_STATS.monthlyExpenses;
+    const categoryColors: { [key: string]: string } = {
+        Housing: '#0047AB',
+        Food: '#006B3C',
+        Transport: '#C41E3A',
+        Entertainment: '#666666',
+        Technology: '#8B5CF6',
+    };
+
+    const { breakdown, total } = useMemo(() => {
+        const expensesByCategory: { [key: string]: number } = {};
+        RECENT_TRANSACTIONS.forEach((tx) => {
+            if (tx.type === 'Expense') {
+                if (!expensesByCategory[tx.category]) {
+                    expensesByCategory[tx.category] = 0;
+                }
+                expensesByCategory[tx.category] += tx.amount;
+            }
+        });
+
+        const totalExpenses = Object.values(expensesByCategory).reduce((sum, amount) => sum + amount, 0);
+        const breakdownData = Object.entries(expensesByCategory)
+            .map(([category, amount]) => ({
+                category,
+                value: Math.round((amount / totalExpenses) * 100),
+                amount,
+                color: categoryColors[category] || '#999999',
+            }))
+            .sort((a, b) => b.amount - a.amount);
+
+        return { breakdown: breakdownData, total: totalExpenses };
+    }, []);
 
     return (
         <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm h-full flex flex-col">
@@ -13,7 +44,7 @@ const SpendingBreakdown = () => {
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                         <Pie
-                            data={SPENDING_BREAKDOWN}
+                            data={breakdown}
                             cx="50%"
                             cy="50%"
                             innerRadius={70}
@@ -24,7 +55,7 @@ const SpendingBreakdown = () => {
                             strokeWidth={1}
                             stroke="#fff"
                         >
-                            {SPENDING_BREAKDOWN.map((entry, index) => (
+                            {breakdown.map((entry, index) => (
                                 <Cell key={index} fill={entry.color} />
                             ))}
                         </Pie>
@@ -34,12 +65,12 @@ const SpendingBreakdown = () => {
 
                 <div className="absolute flex flex-col items-center justify-center pointer-events-none">
                     <span className="text-black/50 text-xs font-semibold uppercase tracking-widest">Total</span>
-                    <span className="text-black font-bold text-2xl">{`$${total}`}</span>
+                    <span className="text-black font-bold text-2xl">{`$${total.toFixed(2)}`}</span>
                 </div>
             </div>
 
             <div className="mt-6 flex flex-col gap-3">
-                {SPENDING_BREAKDOWN.map((item) => (
+                {breakdown.map((item) => (
                     <div key={item.category} className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                             <span
